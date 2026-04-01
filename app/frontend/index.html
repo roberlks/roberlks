@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GMAO Incidencias</title>
+    <link rel="stylesheet" href="/frontend/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Panel de Incidencias (GMAO)</h1>
+      <div class="controls">
+        <label>Usuario (X-User-Id)
+          <select id="userId"></select>
+        </label>
+        <button id="reloadBtn">Recargar</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="card" id="dashboard"></section>
+
+      <section class="card">
+        <h2>Nueva incidencia</h2>
+        <form id="createForm" class="grid">
+          <input name="title" placeholder="Título" required minlength="3" />
+          <input name="opened_at" type="date" required />
+          <select name="property_id" id="propertySelect" required></select>
+          <select name="category" id="categorySelect" required></select>
+          <select name="priority" id="prioritySelect" required></select>
+          <select name="origin" id="originSelect" required></select>
+          <textarea name="description" placeholder="Descripción" required minlength="5"></textarea>
+          <button type="submit">Crear incidencia</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Incidencias</h2>
+        <div id="incidents"></div>
+      </section>
+    </main>
+
+    <p id="toast" class="toast"></p>
+    <script src="/frontend/app.js"></script>
+  </body>
+</html>

@@ -108,3 +108,8 @@ class DashboardOut(BaseModel):
     overdue_incidents: int
     incidents_by_property: dict[str, int]
     average_resolution_days: float
+
+
+class MetaOut(BaseModel):
+    users: list[UserOut]
+    properties: list[PropertyOut]

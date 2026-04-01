@@ -104,3 +104,17 @@ pytest
 3. Subida real de archivos (S3/Blob) y antivirus.
 4. Notificaciones por email/WhatsApp/webhook ante cambios de estado.
 5. Frontend operacional (kanban + calendario SLA + vista móvil).
+
+
+## Frontend de prueba rápida
+Se añadió un frontend estático para usar la API sin Postman:
+- URL: `http://127.0.0.1:8000/`
+- Selecciona usuario para simular permisos (`X-User-Id`).
+- Permite ver dashboard, listar incidencias y crear nuevas.
+
+### Flujo recomendado
+```bash
+python -m app.seed
+uvicorn app.main:app --reload
+```
+Luego abre `http://127.0.0.1:8000/` desde tu navegador.

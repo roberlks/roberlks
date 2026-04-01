@@ -12,6 +12,7 @@ from app.api.schemas import (
     IncidentCreate,
     IncidentOut,
     IncidentUpdate,
+    MetaOut,
 )
 from app.core.enums import IncidentPriority, IncidentStatus, Role
 from app.db.database import get_db
@@ -127,6 +128,16 @@ def dashboard_summary(db: Session = Depends(get_db), current_user: User = Depend
         overdue_incidents=overdue_incidents,
         incidents_by_property={name: total for name, total in by_property_rows},
         average_resolution_days=round(float(avg_days or 0), 2),
+    )
+
+
+@router.get("/meta", response_model=MetaOut)
+def get_meta(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    users = db.scalars(select(User).order_by(User.full_name.asc())).all()
+    properties = db.scalars(select(Property).order_by(Property.name.asc())).all()
+    return MetaOut(
+        users=[{"id": u.id, "full_name": u.full_name, "email": u.email, "role": u.role} for u in users],
+        properties=[{"id": p.id, "name": p.name, "type": p.type, "address": p.address} for p in properties],
     )
 
 

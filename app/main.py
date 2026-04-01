@@ -1,4 +1,8 @@
+from pathlib import Path
+
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.api.incidents import router as incident_router
 from app.db.database import Base, engine
@@ -12,6 +16,14 @@ def startup():
 
 
 app.include_router(incident_router)
+
+frontend_dir = Path(__file__).parent / "frontend"
+app.mount("/frontend", StaticFiles(directory=frontend_dir), name="frontend")
+
+
+@app.get("/", include_in_schema=False)
+def frontend_index():
+    return FileResponse(frontend_dir / "index.html")
 
 
 @app.get("/health")
