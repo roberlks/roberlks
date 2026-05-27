@@ -1,106 +1,71 @@
-# GMAO / Sistema de Gestión de Incidencias para Property Management
+# 👋 Hi! I'm Roberto
 
-API backend realista para registrar, asignar, seguir y cerrar incidencias de inmuebles (administración de fincas).
+🎓 Computer Science & Mathematics Student
+💻 Passionate about software development, problem solving, and building useful things
+📍 Granada, Spain
 
-## Stack detectado y decisión de integración
-El repositorio original no tenía una base de aplicación (solo README de perfil). Para mantener una solución mantenible y extensible se implementó un backend con:
-- **FastAPI** (API REST)
-- **SQLAlchemy 2.0** (modelo relacional)
-- **SQLite** (entorno local rápido, fácilmente migrable)
-- **Pytest + TestClient** (tests críticos)
+---
 
-## Arquitectura
-```text
-app/
-  api/
-    deps.py          # autenticación simple y permisos por rol
-    incidents.py     # endpoints de incidencias + dashboard
-    schemas.py       # contratos pydantic
-  core/
-    enums.py         # catálogos de negocio (estado, prioridad...)
-  db/
-    database.py      # engine, sesión y dependencia DB
-    models.py        # entidades relacionales
-  tests/
-    test_incidents.py
-  main.py            # bootstrap de la API
-  seed.py            # datos de ejemplo
+## 🚀 About Me
+
+I enjoy creating projects, learning new technologies, and understanding how things work under the hood.
+I'm especially interested in:
+
+* 🧠 Algorithms & Data Structures
+* 📊 Mathematics and Logical Thinking
+* ⚙️ Backend Development & Systems
+* 🌐 Web Development
+* 🐧 Linux & Developer Tools
+* 🤖 Artificial Intelligence & Automation
+
+I’m always exploring new ideas and projects where I can combine programming and mathematics.
+
+---
+
+## 🛠️ Technologies & Tools
+
+```txt
+💻 Languages:
+C / C++ / Python / JavaScript / TypeScript / Java
+
+🌐 Web:
+React / Node.js / Express / HTML / CSS
+
+🗄️ Databases:
+PostgreSQL / MySQL / MongoDB
+
+⚙️ Tools:
+Git / Linux / Docker / VS Code
 ```
 
-## Módulo implementado
-### Entidades
-- `users` (roles: admin, manager, technician, readonly)
-- `properties`
-- `property_units`
-- `incidents`
-- `incident_comments`
-- `incident_attachments`
-- `incident_history`
+---
 
-### Campos mínimos de incidencia cubiertos
-- título, descripción, inmueble, unidad opcional
-- categoría, prioridad, estado
-- responsable asignado
-- fecha alta, límite, resolución, cierre
-- coste estimado, coste final
-- origen
-- adjuntos
+## 📚 Currently
 
-### Funcionalidades clave
-- CRUD de incidencias (crear, listar con filtros, detalle, actualizar)
-- Asignación y reasignación de responsable
-- Comentarios internos
-- Timeline/histórico de actividad automático
-- Adjuntos (metadatos)
-- Búsqueda por texto (`q` en título/descripcion)
-- Dashboard (`/incidents/dashboard/summary`) con:
-  - abiertas
-  - urgentes
-  - vencidas
-  - por inmueble
-  - tiempo medio de resolución
-- Validaciones de datos (Pydantic + reglas de negocio)
-- Control de permisos por rol
+* 📖 Studying Computer Science & Mathematics
+* 🧪 Learning more about AI, distributed systems, and optimization
+* 🚀 Building personal projects and experimenting with new technologies
 
-## Roles y permisos
-Se implementó un control simple extensible mediante cabecera `X-User-Id`:
-- **admin**: acceso total
-- **manager**: crear/editar/asignar/cerrar
-- **technician**: ver y comentar solo incidencias asignadas
-- **readonly**: lectura
+---
 
-## Endpoints principales
-- `GET /health`
-- `GET /incidents` (filtros: `status`, `priority`, `property_id`, `category`, `assigned_to_id`, `date_from`, `date_to`, `q`)
-- `POST /incidents`
-- `GET /incidents/{incident_id}`
-- `PATCH /incidents/{incident_id}`
-- `POST /incidents/{incident_id}/assign/{user_id}`
-- `POST /incidents/{incident_id}/comments`
-- `POST /incidents/{incident_id}/attachments`
-- `GET /incidents/dashboard/summary`
+## 📈 GitHub Stuff
 
-## Ejecución local
-```bash
-python -m venv .venv
-source .venv/bin/activate
-pip install -e .[dev]
-uvicorn app.main:app --reload
+```js
+const roberto = {
+    code: ["C++", "Python", "JavaScript", "TypeScript"],
+    interests: ["Math", "Algorithms", "Backend", "AI"],
+    currentlyLearning: ["Distributed Systems", "Machine Learning"],
+    challenge: "Turning ideas into real projects"
+};
 ```
 
-## Seeds
-```bash
-python -m app.seed
-```
+---
 
-## Tests
-```bash
-pytest
-```
+## 🌍 Connect With Me
 
-## Próximas mejoras recomendadas
-1. Sustituir `X-User-Id` por JWT/OAuth real.
-2. Añadir migraciones versionadas (Alembic).
-3. Subida real de archivos (S3/Blob) y antivirus.
-4. Notificaciones por email/WhatsApp/webhook ante cambios de estado.
-5. Frontend operacional (kanban + calendario SLA + vista móvil).
+* 💼 GitHub: `@your-username`
+* 📫 Email: `your-email@example.com`
+
+---
+
+⭐ *"The best way to learn is by building."*
