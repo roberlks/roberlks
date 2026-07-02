@@ -63,8 +63,8 @@ const roberto = {
 
 ## 🌍 Connect With Me
 
-* 💼 GitHub: `@your-username`
-* 📫 Email: `your-email@example.com`
+* 💼 GitHub: `@roberlks222`
+* 📫 Email: `e.roberlks222@go.ugr.es`
 
 ---
 
